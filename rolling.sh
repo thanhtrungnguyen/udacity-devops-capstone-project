@@ -1,6 +1,6 @@
 #! /bin/bash
 
-DEPLOYMENT_NAME=devoops-capstone
+DEPLOYMENT_NAME=devops-capstone
 NEW_IMAGE_NAME=registry.hub.docker.com/thanhtrungdocker/devops-capstone:latest
 
 kubectl get deployments -o wide
