@@ -1,117 +1,72 @@
-# Capstone Project
+## Executive Summary
 
-> My website: [My blog](http://)
-> My github: [Github]()
-> CI/CD pipelines: [circleci](https://app.circleci.com/pipelines/github/thanhtrungnguyen/udacity-devops-capstone-project)
+This project uses CircleCI and an AWS EKS (Amazon Elastic Kubernetes Service) cluster to operationalize a Flask demo web application for my blog:
 
-## Overview
+1. **Ongoing Utilization of CircleCI**:
 
-This project operationalizes a Python Flask demo web my blog using CircleCI and an AWS EKS (Amazon Elastic Kubernetes Service) cluster:
+   A CircleCI pipeline has been established in order to automate the development procedure.
 
-1. **Continuous Integration with CircleCI**:
+   - To guarantee code quality, we carry out code linting in the pipeline.
+     . We create an application Docker image.
+     . After that, the Docker image is uploaded to a public Docker Registry—Docker Hub, in this case—for convenient deployment and access.
 
-   - We have set up a CircleCI pipeline to automate the development workflow.
-   - In the pipeline, we perform code linting to ensure code quality.
-   - We build a Docker image of the application.
-   - The Docker image is then pushed to a public Docker Registry, specifically Docker Hub, for easy access and deployment.
+2. **AWS EKS Kubernetes Deployment**:
 
-2. **Kubernetes Deployment on AWS EKS**:
+   - To administer our Kubernetes cluster, we make use of AWS EKS.
+   - The Flask application is deployed and executed within the EKS cluster.
+     . This makes it possible for us to use Kubernetes for scaling, container orchestration, and management.
 
-   - We leverage AWS EKS to manage our Kubernetes cluster.
-   - Within the EKS cluster, we deploy and run the Flask application.
-   - This allows us to utilize Kubernetes for container orchestration, scaling, and management.
+3. **Rolling Updates and Production Deployment**:
 
-3. **Production Deployment and Rolling Updates**:
+   - We use a rolling update method when it is time to push a new version of the application to production.
+     . As a result, there will be less downtime and the program will transition between versions smoothly.
+     . This update is orchestrated using Kubernetes.
 
-   - When it's time to promote a new version of the application to production, we follow a rolling update strategy.
-   - This ensures minimal downtime and seamless transitions between different versions of the application.
-   - Kubernetes handles the orchestration of this update.
+4. **Makefile and Shell Scripts**: - We have arranged the many tasks in this project into a Makefile in order to automate and streamline them. Task execution and project management are made easier by this organized method.
 
-4. **Makefile and Shell Scripts**:
-   - To streamline and automate the various tasks in this project, we have organized them into a Makefile.
-   - This structured approach simplifies project management and execution of tasks.
+We have developed a comprehensive workflow for creating, testing, and deploying the "hello" Flask application by combining CircleCI, AWS EKS, Docker Hub, and Kubernetes. This ensures effective development and production deployment processes.
 
-By combining CircleCI, AWS EKS, Docker Hub, and Kubernetes, we have created a robust workflow for developing, testing, and deploying the "hello" Flask application, ensuring efficient development and production deployment processes.
+## Duty
 
-## Tasks
+In order to create a Docker image and deploy it to a Kubernetes cluster, this project adheres to CI/CD best practices. The following are the main tasks for the project:
 
-This project follows a CI/CD methodology to build a Docker image and deploy it to a Kubernetes cluster. Here are the key tasks within the project:
+1. **Setup of Environment**:
 
-1. **Environment Setup**:
+   - Use `make setup` to initialize the virtual Python environment.
+     Install each and every required dependency using `make install`.
 
-   - Initialize the Python virtual environment: `make setup`
-   - Install all necessary dependencies: `make install`
+2. **Assurance of Code Quality**:
 
-2. **Code Quality Assurance**:
+   - Use linting to test the project's code:
+     - Dockerfile, Python code, and Lint shell scripts: `make lint}
 
-   - Test the project's code through linting:
-     - Lint shell scripts, Dockerfile, and Python code: `make lint`
+3. **Creation of Docker Images**:
 
-3. **Docker Image Creation**:
+   - To containerize the "hello" application, create a Dockerfile at `Dockerfile}.
 
-   - Create a Dockerfile to containerize the "hello" application: `Dockerfile`
+4. **Deployment of Docker Images**:
 
-4. **Docker Image Deployment**:
+   - Upload the containerized program to Docker Hub, or another public Docker registry.
 
-   - Deploy the containerized application to a public Docker Registry, specifically Docker Hub.
+5. **Deployment of Kubernetes Cluster**:
 
-5. **Kubernetes Cluster Deployment**:
+   - Use `make create-cluster` to deploy a Kubernetes cluster.
 
-   - Deploy a Kubernetes cluster using: `make create-cluster`
+6. **Kubernetes Application Deployment**:
 
-6. **Application Deployment in Kubernetes**:
+   - Use `make deployment` to launch the application into the Kubernetes cluster.
 
-   - Deploy the application into the Kubernetes cluster: `make deployment`
+7. **Rolling Updates**: - Use a rolling-update technique to implement an update strategy for the application inside the cluster: {make rolling}
 
-7. **Rolling Updates**:
-   - Implement an update strategy for the application within the cluster using a rolling-update approach: `make rolling`
+The software development lifecycle is fully automated by this CI/CD project, guaranteeing effective development and deployment procedures from code quality checks to deployment in a Kubernetes cluster.
 
-This CI/CD project automates the entire software development lifecycle, from code quality checks to deployment in a Kubernetes cluster, ensuring efficient development and deployment processes.
+## Cloud Services and CI/CD Tools:
 
-## CI/CD Tools and Cloud Services:
-
-1. **Circle CI**: A cloud-based CI/CD service.
-2. **Amazon AWS**: A provider of cloud services.
-3. **AWS EKS**: Amazon Elastic Kubernetes Service, a managed Kubernetes service.
-4. **AWS eksctl**: The official CLI tool for Amazon EKS.
-5. **AWS CLI**: A command-line tool for interacting with AWS services.
-6. **CloudFormation**: An Infrastructure as Code service for AWS.
-7. **kubectl**: A command-line tool for controlling Kubernetes clusters.
-8. **Docker Hub**: A container image repository service.
-
-## Main files
-
-```shell
-├── app
-│   ├── app.py
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   ├── static
-│   │   ├── css
-│   │   │   └── style.css
-│   │   └── images
-│   │       └── pic.png
-│   └── templates
-│       └── index.html
-├── cleanup.sh
-├── create-cluster.sh
-├── deployment.sh
-├── install-docker.sh
-├── install-eksctl.sh
-├── install-kubectl.sh
-├── Makefile
-├── README.md
-└── rolling.sh
-```
-
-The Makefile triggers the execution of the following shell scripts:
-
-`create-cluster.sh`: creates the EKS cluster
-
-`install-eksctl.sh`: installs the eksctl tool
-
-`install-kubectl.sh`: installs the kubectl tool
-
-`create-cluster.sh`: Create cluster
-
-`deployment.sh`: deploys and exposes a service in the K8S cluster
+1. **Circle CI**: A CI/CD service hosted in the cloud.
+2. **Amazon AWS**: A cloud service provider.
+3. The managed Kubernetes service **AWS EKS** is offered by Amazon.
+4. The official CLI tool for Amazon EKS is **AWS eksctl**.
+5. **AWS CLI**: An AWS service-interaction command-line tool.
+   AWS's Infrastructure as Code service is called **CloudFormation**.
+6. **kubectl**: Kubernetes clusters can be managed with this command-line utility.
+7. **Docker Hub**: An online service for storing container images.
