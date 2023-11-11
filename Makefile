@@ -4,11 +4,11 @@ setup:
 	# source ~/.devops/bin/activate
 
 install:
-	echo ":::: Install dependencies ::::"
+	echo "Installing dependencies..."
 	pip install --upgrade pip && pip install -r app/requirements.txt
 
 install-hadolint:
-	echo ":::: Installing hadolint ::::"
+	echo "Installing hadolint..."
 	sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 && chmod +x /bin/hadolint
 
 install-docker:
@@ -24,15 +24,15 @@ install-eskctl:
 	./install-eksctl.sh
 
 run-docker:
-	echo ":::: RUN DOCKER ::::"
+	echo "Running Docker..."
 	docker run -t --rm -p 80:80 devops-capstone
 
 build-docker:
-	echo ":::: BUILD DOCKER ::::"
+	echo "Building Docker..."
 	docker build --tag devops-capstone app
 
 upload-docker:
-	echo ":::: UPLOAD DOCKER ::::"
+	echo "Uploading Docker to Docker Hub..."
 	docker login -u thanhtrungdocker
 	docker image tag devops-capstone thanhtrungdocker/devops-capstone:v1
 	docker push thanhtrungdocker/devops-capstone:v1
@@ -69,10 +69,8 @@ test:
 	#python -m pytest --nbval notebook.ipynb
 
 lint:
-	# See local hadolint install instructions:   https://github.com/hadolint/hadolint
 	# This is linter for Dockerfiles
 	hadolint app/Dockerfile
-	# This is a linter for Python source code linter: https://www.pylint.org/
 	# This should be run from inside a virtualenv
 	pylint --disable=R,C,W1203,W1202 app/app.py
 
