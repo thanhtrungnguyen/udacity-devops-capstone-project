@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # Use the same Docker base as the project
-      - image: python:4.10
+      - image: python:3.10
 
     working_directory: ~/app
 
