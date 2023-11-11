@@ -1,8 +1,8 @@
 # Capstone Project
 
-> My website: [My blog](http://ab034b37a313c449b923bb4c2aa4e53f-1964705682.us-west-2.elb.amazonaws.com/)
+> My website: [My blog](http://)
 > My github: [Github]()
-> ci/cd pipelines: [circleci](https://app.circleci.com/pipelines/github/thanhtrungdockern/devoops-capstone/3/workflows/8fac6f73-8d50-45e7-88c8-1af72a43c703/jobs/3)
+> CI/CD pipelines: [circleci](https://app.circleci.com/pipelines/github/thanhtrungnguyen/udacity-devops-capstone-project)
 
 ## Overview
 
