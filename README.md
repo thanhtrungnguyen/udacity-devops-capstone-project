@@ -1,3 +1,5 @@
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/thanhtrungnguyen/udacity-devops-capstone-project/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/thanhtrungnguyen/udacity-devops-capstone-project/tree/main)
+
 ## Executive Summary
 
 This project uses CircleCI and an AWS EKS (Amazon Elastic Kubernetes Service) cluster to operationalize a Flask demo web application for my blog:

@@ -8,7 +8,7 @@ cluster_exists() {
 }
 
 if cluster_exists; then
-    echo "Cluster '${CLUSTER}.${REGION}$' already exists!"
+    echo "The cluster '${CLUSTER}.${REGION}$' already exists!"
 else
     echo "Creating cluster..."
     eksctl create cluster --name "$CLUSTER" --region="$REGION" --nodes-min=2 --nodes-max=3

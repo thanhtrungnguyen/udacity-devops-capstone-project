@@ -1,14 +1,14 @@
 #! /bin/bash
-DEPLOYMENT_NAME=devoops-capstone
+DEPLOYMENT_NAME=devops-capstone
 echo ":::: Deleting service ${DEPLOYMENT_NAME} ::::"
 kubectl delete services ${DEPLOYMENT_NAME}
 
 echo ":::: Deleting deployment ${DEPLOYMENT_NAME} ::::"
 kubectl delete deployments ${DEPLOYMENT_NAME}
 
-echo ":::: DEPLOYMENT ::::"
+echo "Deployments:"
 kubectl get deployments -o wide
-echo ":::: SERVICES ::::"
+echo "List all service:"
 kubectl get services -o wide
-echo ":::: PODS ::::"
+echo "List all ports:"
 kubectl get pods -o wide

@@ -25,17 +25,17 @@ install-eskctl:
 
 run-docker:
 	echo ":::: RUN DOCKER ::::"
-	docker run -t --rm -p 80:80 devoops-capstone
+	docker run -t --rm -p 80:80 devops-capstone
 
 build-docker:
 	echo ":::: BUILD DOCKER ::::"
-	docker build --tag devoops-capstone app
+	docker build --tag devops-capstone app
 
 upload-docker:
 	echo ":::: UPLOAD DOCKER ::::"
-	docker login -u nvnhan
-	docker image tag devoops-capstone nvnhan/devoops-capstone:v1
-	docker push nvnhan/devoops-capstone:v1
+	docker login -u thanhtrungdocker
+	docker image tag devops-capstone thanhtrungdocker/devops-capstone:v1
+	docker push thanhtrungdocker/devops-capstone:v1
 
 create-cluster:
 	chmod +x ./create-cluster.sh
@@ -51,13 +51,13 @@ rolling:
 
 rollback:
 	kubectl get deployments -o wide
-	kubectl rollout undo deployment devoops-capstone
+	kubectl rollout undo deployment devops-capstone
 	kubectl describe pods | grep -i image
 	kubectl get pods -o wide
 	kubectl get deployments -o wide
 
 forwarding:
-	kubectl port-forward service/devoops-capstone 80:80
+	kubectl port-forward service/devops-capstone 80:80
 
 cleanup:
 	chmod +x ./cleanup.sh
