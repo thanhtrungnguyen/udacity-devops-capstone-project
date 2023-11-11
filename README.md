@@ -1,4 +1,8 @@
+## Udacity DevOps Capstone Project
+
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/thanhtrungnguyen/udacity-devops-capstone-project/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/thanhtrungnguyen/udacity-devops-capstone-project/tree/main)
+
+[Go to the Web site](http://adb108faca05b47dca22080cafeb7a57-460402139.us-west-1.elb.amazonaws.com/)
 
 ## Executive Summary
 
@@ -61,14 +65,3 @@ In order to create a Docker image and deploy it to a Kubernetes cluster, this pr
 7. **Rolling Updates**: - Use a rolling-update technique to implement an update strategy for the application inside the cluster: {make rolling}
 
 The software development lifecycle is fully automated by this CI/CD project, guaranteeing effective development and deployment procedures from code quality checks to deployment in a Kubernetes cluster.
-
-## Cloud Services and CI/CD Tools:
-
-1. **Circle CI**: A CI/CD service hosted in the cloud.
-2. **Amazon AWS**: A cloud service provider.
-3. The managed Kubernetes service **AWS EKS** is offered by Amazon.
-4. The official CLI tool for Amazon EKS is **AWS eksctl**.
-5. **AWS CLI**: An AWS service-interaction command-line tool.
-   AWS's Infrastructure as Code service is called **CloudFormation**.
-6. **kubectl**: Kubernetes clusters can be managed with this command-line utility.
-7. **Docker Hub**: An online service for storing container images.
